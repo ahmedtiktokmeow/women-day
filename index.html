@@ -254,17 +254,16 @@ document.getElementById('screen' + screenNum).classList.add('active');
 function startSurprise() {
 const music = document.getElementById('bgMusic');
 
-// Attempt to play music
-music.play().then(() => {
-console.log("Music started!");
-}).catch(e => {
-console.log("Music play failed:", e);
+music.currentTime = 0;
+music.muted = false;
+
+music.play().catch(() => {
+console.log("iPhone blocked autoplay");
 });
 
-// Switch screen
 showScreen(2);
 }
-
+  
 function revealCard(element, message) {
 if(!element.classList.contains('revealed')) {
 element.innerHTML = `<p style="font-size: 0.8rem; padding: 5px;">${message}</p>`;
