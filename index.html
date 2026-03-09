@@ -238,29 +238,17 @@ transition: transform 0.2s;
 </div>
 </div>
 
-<audio id="bgMusic" loop playsinline>
+<audio id="bgMusic" autoplay loop playsinline muted>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
   
 <script>
 let revealedCount = 0;
-
-function showScreen(screenNum) {
-document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-document.getElementById('screen' + screenNum).classList.add('active');
-}
-
-// Combined function to ensure music plays on mobile interaction
-function startSurprise() {
 const music = document.getElementById("bgMusic");
 
-music.muted = true;
-music.play().then(() => {
+// unmute after first touch anywhere
+document.addEventListener("touchstart", () => {
 music.muted = false;
-}).catch(err => {
-console.log(err);
-});
-
 music.volume = 0;
 
 let fade = setInterval(() => {
@@ -271,6 +259,14 @@ clearInterval(fade);
 }
 }, 200);
 
+}, { once: true });
+
+function showScreen(screenNum) {
+document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+document.getElementById('screen' + screenNum).classList.add('active');
+}
+
+function startSurprise() {
 showScreen(2);
 }
 
