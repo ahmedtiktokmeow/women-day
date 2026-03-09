@@ -12,7 +12,6 @@
 --pink-dark: #d63384;
 --text-color: #4a4a4a;
 }
-
 body, html {
 margin: 0;
 padding: 0;
@@ -25,9 +24,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
-
 #app {
-width: 90%; /* Better for mobile */
+width: 90%;
 max-width: 400px;
 height: 85vh;
 position: relative;
@@ -38,26 +36,21 @@ overflow-y: auto;
 padding: 20px;
 text-align: center;
 }
-
 .screen {
 display: none;
 animation: fadeIn 0.8s ease-in-out;
 }
-
 .active {
 display: block;
 }
-
 @keyframes fadeIn {
 from { opacity: 0; transform: translateY(10px); }
 to { opacity: 1; transform: translateY(0); }
 }
-
 /* --- SCREEN 1: ENVELOPE --- */
 .envelope-wrapper {
-margin-top: 100px; /* Pushed down more so it doesn't cover text */
+margin-top: 100px;
 }
-
 .envelope {
 width: 150px;
 height: 120px;
@@ -68,7 +61,6 @@ cursor: pointer;
 border-radius: 0 0 10px 10px;
 animation: float 3s ease-in-out infinite;
 }
-
 .envelope::before {
 content: '';
 position: absolute;
@@ -78,32 +70,27 @@ border-left: 75px solid transparent;
 border-right: 75px solid transparent;
 border-bottom: 60px solid var(--pink-accent);
 }
-
 .heart-icon {
 font-size: 40px;
 color: white;
 line-height: 120px;
 }
-
 @keyframes float {
 0%, 100% { transform: translateY(0); }
 50% { transform: translateY(-15px); }
 }
-
 /* --- SCREEN 2: THE LETTER --- */
 .letter-content {
 text-align: left;
 padding: 10px;
 line-height: 1.6;
-margin-top: 40px; /* Added spacing to prevent overlap with the top */
+margin-top: 40px;
 }
-
 .letter-content h1 {
 font-family: 'Dancing Script', cursive;
 color: var(--pink-dark);
 text-align: center;
 }
-
 /* --- SCREEN 3: PLAYLIST --- */
 .playlist-card {
 background: #fff0f3;
@@ -111,7 +98,6 @@ border-radius: 20px;
 padding: 15px;
 margin-top: 20px;
 }
-
 .song-item {
 display: flex;
 align-items: center;
@@ -121,7 +107,6 @@ padding: 10px;
 border-radius: 15px;
 box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
 .song-img {
 width: 50px;
 height: 50px;
@@ -132,7 +117,6 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-
 /* --- SCREEN 4: MEMORY CARDS --- */
 .grid {
 display: grid;
@@ -140,7 +124,6 @@ grid-template-columns: 1fr 1fr;
 gap: 15px;
 margin-top: 20px;
 }
-
 .card {
 background: white;
 border: 2px dashed var(--pink-accent);
@@ -153,12 +136,10 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 }
-
 .card.revealed {
 border-style: solid;
 background: #fff0f3;
 }
-
 .btn {
 background: var(--pink-dark);
 color: white;
@@ -170,112 +151,143 @@ margin-top: 20px;
 cursor: pointer;
 transition: transform 0.2s;
 }
-
 .btn:active { transform: scale(0.95); }
 
+/* Fallback music button */
+#play-fallback {
+display: none;
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: var(--pink-dark);
+color: white;
+border: none;
+padding: 10px 16px;
+border-radius: 25px;
+font-size: 0.85rem;
+font-family: 'Quicksand', sans-serif;
+font-weight: bold;
+cursor: pointer;
+box-shadow: 0 4px 12px rgba(214,51,132,0.4);
+z-index: 9999;
+animation: fadeIn 0.5s ease;
+}
 </style>
 </head>
 <body>
-
 <div id="app">
-<div id="screen1" class="screen active">
-<p style="color: var(--pink-dark); font-weight: bold;">SPECIAL DELIVERY</p>
-<h2 style="font-size: 1.2rem;">Happy Women's Day, My Love!</h2>
-<p>Something from the heart, just for you</p>
-<div class="envelope-wrapper">
-<div class="envelope" onclick="startSurprise()">
-<div class="heart-icon">❤️</div>
-</div>
-</div>
-<p style="margin-top: 30px; font-size: 0.8rem; color: #888;">Click to open your Women's Day Surprise</p>
+  <div id="screen1" class="screen active">
+    <p style="color: var(--pink-dark); font-weight: bold;">SPECIAL DELIVERY</p>
+    <h2 style="font-size: 1.2rem;">Happy Women's Day, My Love!</h2>
+    <p>Something from the heart, just for you</p>
+    <div class="envelope-wrapper">
+      <div class="envelope" onclick="startSurprise()">
+        <div class="heart-icon">❤️</div>
+      </div>
+    </div>
+    <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">Click to open your Women's Day Surprise</p>
+  </div>
+
+  <div id="screen2" class="screen">
+    <div class="letter-content">
+      <h1>To My Beautiful Girl,</h1>
+      <p>Today is not just about celebrating women — it's about celebrating <strong>YOU</strong>.</p>
+      <p>Your strength, your kindness, and the way you make the world brighter just by being in it inspire me every single day.</p>
+      <p>I'm incredibly lucky to walk beside such a beautiful and strong woman. Never forget how special you are.</p>
+      <p style="text-align: right; font-family: 'Dancing Script'; font-size: 1.5rem;">Forever Yours ❤️</p>
+    </div>
+    <button class="btn" onclick="showScreen(3)">See Your Playlist</button>
+  </div>
+
+  <div id="screen3" class="screen">
+    <h2 style="color: var(--pink-dark);">Vibes for My Queen 🎵</h2>
+    <div class="playlist-card">
+      <div class="song-item">
+        <div class="song-img">🎧</div>
+        <div style="text-align: left;">
+          <div style="font-weight: bold;">El Hob Gany - TUL8TE</div>
+          <div style="font-size: 0.7rem;">The song that reminds me of you...</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn" onclick="showScreen(4)">Continue the Surprise ✨</button>
+  </div>
+
+  <div id="screen4" class="screen">
+    <h2 style="color: var(--pink-dark);">Special Wishes 🌸</h2>
+    <p>Tap each card to reveal a message!</p>
+    <div class="grid">
+      <div class="card" onclick="revealCard(this, 'You are strong, beautiful, and truly one of a kind ✨')">
+        <span>🎁</span>
+      </div>
+      <div class="card" onclick="revealCard(this, 'I am so proud of the woman you are becoming every day.')">
+        <span>🌟</span>
+      </div>
+      <div class="card" onclick="revealCard(this, 'Thank you for choosing me to be by your side.')">
+        <span>💌</span>
+      </div>
+      <div class="card" onclick="revealCard(this, 'Happy Women\'s Day to my forever favorite person!')">
+        <span>👑</span>
+      </div>
+    </div>
+    <div id="final-btn-container" style="display:none;">
+      <button class="btn" onclick="alert('I love you to the moon and back!')">Seal With Love ❤️</button>
+    </div>
+  </div>
 </div>
 
-<div id="screen2" class="screen">
-<div class="letter-content">
-<h1>To My Beautiful Girl,</h1>
-<p>Today is not just about celebrating women — it's about celebrating <strong>YOU</strong>.</p>
-<p>Your strength, your kindness, and the way you make the world brighter just by being in it inspire me every single day.</p>
-<p>I'm incredibly lucky to walk beside such a beautiful and strong woman. Never forget how special you are.</p>
-<p style="text-align: right; font-family: 'Dancing Script'; font-size: 1.5rem;">Forever Yours ❤️</p>
-</div>
-<button class="btn" onclick="showScreen(3)">See Your Playlist</button>
-</div>
-
-<div id="screen3" class="screen">
-<h2 style="color: var(--pink-dark);">Vibes for My Queen 🎵</h2>
-<div class="playlist-card">
-<div class="song-item">
-<div class="song-img">🎧</div>
-<div style="text-align: left;">
-<div style="font-weight: bold;">El Hob Gany - TUL8TE</div>
-<div style="font-size: 0.7rem;">The song that reminds me of you...</div>
-</div>
-</div>
-</div>
-<button class="btn" onclick="showScreen(4)">Continue the Surprise ✨</button>
-</div>
-
-<div id="screen4" class="screen">
-<h2 style="color: var(--pink-dark);">Special Wishes 🌸</h2>
-<p>Tap each card to reveal a message!</p>
-<div class="grid">
-<div class="card" onclick="revealCard(this, 'You are strong, beautiful, and truly one of a kind ✨')">
-<span>🎁</span>
-</div>
-<div class="card" onclick="revealCard(this, 'I am so proud of the woman you are becoming every day.')">
-<span>🌟</span>
-</div>
-<div class="card" onclick="revealCard(this, 'Thank you for choosing me to be by your side.')">
-<span>💌</span>
-</div>
-<div class="card" onclick="revealCard(this, 'Happy Women\'s Day to my forever favorite person!')">
-<span>👑</span>
-</div>
-</div>
-<div id="final-btn-container" style="display:none;">
-<button class="btn" onclick="alert('I love you to the moon and back!')">Seal With Love ❤️</button>
-</div>
-</div>
-</div>
-
-<audio id="bgMusic" loop preload="auto">
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+<!-- Fallback play button for iOS if autoplay is blocked -->
+<button id="play-fallback" onclick="manualPlay()">▶ Play Music 🎵</button>
 
 <script>
-let revealedCount = 0;
+  let revealedCount = 0;
+  let bgMusic = null;
 
-function showScreen(screenNum) {
-document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-document.getElementById('screen' + screenNum).classList.add('active');
-}
+  function showScreen(screenNum) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen' + screenNum).classList.add('active');
+  }
 
-// Combined function to ensure music plays on mobile interaction
-function startSurprise() {
-const music = document.getElementById('bgMusic');
+  function startSurprise() {
+    // Create Audio INSIDE the user gesture — required by iOS Safari
+    if (!bgMusic) {
+      bgMusic = new Audio('song.mp3');
+      bgMusic.loop = true;
+    }
 
-// Attempt to play music
-music.play().then(() => {
-console.log("Music started!");
-}).catch(e => {
-console.log("Music play failed:", e);
-});
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          document.getElementById('play-fallback').style.display = 'none';
+        })
+        .catch(() => {
+          // iOS blocked it — show the fallback button
+          document.getElementById('play-fallback').style.display = 'block';
+        });
+    }
 
-// Switch screen
-showScreen(2);
-}
+    showScreen(2);
+  }
 
-function revealCard(element, message) {
-if(!element.classList.contains('revealed')) {
-element.innerHTML = `<p style="font-size: 0.8rem; padding: 5px;">${message}</p>`;
-element.classList.add('revealed');
-revealedCount++;
+  function manualPlay() {
+    if (bgMusic) {
+      bgMusic.play().then(() => {
+        document.getElementById('play-fallback').style.display = 'none';
+      });
+    }
+  }
 
-if(revealedCount === 4) {
-document.getElementById('final-btn-container').style.display = 'block';
-}
-}
-}
+  function revealCard(element, message) {
+    if (!element.classList.contains('revealed')) {
+      element.innerHTML = `<p style="font-size: 0.8rem; padding: 5px;">${message}</p>`;
+      element.classList.add('revealed');
+      revealedCount++;
+      if (revealedCount === 4) {
+        document.getElementById('final-btn-container').style.display = 'block';
+      }
+    }
+  }
 </script>
 </body>
 </html>
