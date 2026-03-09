@@ -252,9 +252,16 @@ document.getElementById('screen' + screenNum).classList.add('active');
 
 // Combined function to ensure music plays on mobile interaction
 function startSurprise() {
-const music = document.getElementById('bgMusic');
+const music = document.getElementById("bgMusic");
+
+music.muted = true;
+music.play().then(() => {
+music.muted = false;
+}).catch(err => {
+console.log(err);
+});
+
 music.volume = 0;
-music.play();
 
 let fade = setInterval(() => {
 if (music.volume < 1) {
