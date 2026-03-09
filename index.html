@@ -7,185 +7,137 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
---pink-bg: #fdf0f5;
---pink-accent: #ff85a2;
---pink-dark: #d63384;
---text-color: #4a4a4a;
+  --pink-bg: #fdf0f5;
+  --pink-accent: #ff85a2;
+  --pink-dark: #d63384;
+  --text-color: #4a4a4a;
 }
 body, html {
-margin: 0;
-padding: 0;
-height: 100%;
-font-family: 'Quicksand', sans-serif;
-background-color: var(--pink-bg);
-color: var(--text-color);
-overflow: hidden;
-display: flex;
-justify-content: center;
-align-items: center;
+  margin: 0; padding: 0; height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--pink-bg);
+  color: var(--text-color);
+  overflow: hidden;
+  display: flex; justify-content: center; align-items: center;
 }
 #app {
-width: 90%;
-max-width: 400px;
-height: 85vh;
-position: relative;
-background: white;
-border-radius: 30px;
-box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-overflow-y: auto;
-padding: 20px;
-text-align: center;
+  width: 90%; max-width: 400px; height: 85vh;
+  position: relative; background: white;
+  border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  overflow-y: auto; padding: 20px; text-align: center;
 }
-.screen {
-display: none;
-animation: fadeIn 0.8s ease-in-out;
-}
-.active {
-display: block;
-}
+.screen { display: none; animation: fadeIn 0.8s ease-in-out; }
+.active { display: block; }
 @keyframes fadeIn {
-from { opacity: 0; transform: translateY(10px); }
-to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-/* --- SCREEN 1: ENVELOPE --- */
-.envelope-wrapper {
-margin-top: 100px;
-}
+.envelope-wrapper { margin-top: 80px; }
 .envelope {
-width: 150px;
-height: 120px;
-background: var(--pink-accent);
-margin: 0 auto;
-position: relative;
-cursor: pointer;
-border-radius: 0 0 10px 10px;
-animation: float 3s ease-in-out infinite;
+  width: 150px; height: 120px;
+  background: var(--pink-accent);
+  margin: 0 auto; position: relative;
+  cursor: pointer; border-radius: 0 0 10px 10px;
+  animation: float 3s ease-in-out infinite;
 }
 .envelope::before {
-content: '';
-position: absolute;
-top: -60px;
-left: 0;
-border-left: 75px solid transparent;
-border-right: 75px solid transparent;
-border-bottom: 60px solid var(--pink-accent);
+  content: '';
+  position: absolute; top: -60px; left: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 60px solid var(--pink-accent);
 }
-.heart-icon {
-font-size: 40px;
-color: white;
-line-height: 120px;
-}
+.heart-icon { font-size: 40px; color: white; line-height: 120px; }
 @keyframes float {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(-15px); }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-15px); }
 }
-/* --- SCREEN 2: THE LETTER --- */
 .letter-content {
-text-align: left;
-padding: 10px;
-line-height: 1.6;
-margin-top: 40px;
+  text-align: left; padding: 10px; line-height: 1.6; margin-top: 40px;
 }
 .letter-content h1 {
-font-family: 'Dancing Script', cursive;
-color: var(--pink-dark);
-text-align: center;
+  font-family: 'Dancing Script', cursive;
+  color: var(--pink-dark); text-align: center;
 }
-/* --- SCREEN 3: PLAYLIST --- */
-.playlist-card {
-background: #fff0f3;
-border-radius: 20px;
-padding: 15px;
-margin-top: 20px;
-}
+.playlist-card { background: #fff0f3; border-radius: 20px; padding: 15px; margin-top: 20px; }
 .song-item {
-display: flex;
-align-items: center;
-background: white;
-margin: 10px 0;
-padding: 10px;
-border-radius: 15px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex; align-items: center;
+  background: white; margin: 10px 0; padding: 10px;
+  border-radius: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .song-img {
-width: 50px;
-height: 50px;
-border-radius: 10px;
-margin-right: 15px;
-background: #eee;
-display: flex;
-align-items: center;
-justify-content: center;
+  width: 50px; height: 50px; border-radius: 10px;
+  margin-right: 15px; background: #eee;
+  display: flex; align-items: center; justify-content: center;
 }
-/* --- SCREEN 4: MEMORY CARDS --- */
-.grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
-margin-top: 20px;
-}
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
 .card {
-background: white;
-border: 2px dashed var(--pink-accent);
-border-radius: 15px;
-padding: 10px;
-cursor: pointer;
-min-height: 100px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  background: white; border: 2px dashed var(--pink-accent);
+  border-radius: 15px; padding: 10px; cursor: pointer;
+  min-height: 100px; display: flex;
+  flex-direction: column; justify-content: center; align-items: center;
 }
-.card.revealed {
-border-style: solid;
-background: #fff0f3;
-}
+.card.revealed { border-style: solid; background: #fff0f3; }
 .btn {
-background: var(--pink-dark);
-color: white;
-border: none;
-padding: 12px 25px;
-border-radius: 25px;
-font-weight: bold;
-margin-top: 20px;
-cursor: pointer;
-transition: transform 0.2s;
+  background: var(--pink-dark); color: white; border: none;
+  padding: 12px 25px; border-radius: 25px; font-weight: bold;
+  margin-top: 20px; cursor: pointer; transition: transform 0.2s;
+  font-family: 'Quicksand', sans-serif;
 }
 .btn:active { transform: scale(0.95); }
 
-/* Fallback music button */
-#play-fallback {
-display: none;
-position: fixed;
-bottom: 20px;
-right: 20px;
-background: var(--pink-dark);
-color: white;
-border: none;
-padding: 10px 16px;
-border-radius: 25px;
-font-size: 0.85rem;
-font-family: 'Quicksand', sans-serif;
-font-weight: bold;
-cursor: pointer;
-box-shadow: 0 4px 12px rgba(214,51,132,0.4);
-z-index: 9999;
-animation: fadeIn 0.5s ease;
+#music-start-btn {
+  display: block;
+  width: 80%;
+  margin: 18px auto 0 auto;
+  background: linear-gradient(135deg, var(--pink-accent), var(--pink-dark));
+  color: white; border: none;
+  padding: 14px 20px; border-radius: 30px;
+  font-size: 1rem; font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(214,51,132,0.35);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(214,51,132,0.35); }
+  50%       { box-shadow: 0 6px 30px rgba(214,51,132,0.65); }
+}
+#music-status {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #aaa;
+  min-height: 18px;
+}
+#music-indicator {
+  display: none;
+  position: fixed; bottom: 18px; right: 18px;
+  background: var(--pink-dark); color: white;
+  border: none; padding: 9px 16px;
+  border-radius: 25px; font-size: 0.8rem;
+  font-family: 'Quicksand', sans-serif; font-weight: bold;
+  cursor: pointer; z-index: 9999;
+  box-shadow: 0 4px 12px rgba(214,51,132,0.4);
 }
 </style>
 </head>
 <body>
 <div id="app">
+
   <div id="screen1" class="screen active">
-    <p style="color: var(--pink-dark); font-weight: bold;">SPECIAL DELIVERY</p>
-    <h2 style="font-size: 1.2rem;">Happy Women's Day, My Love!</h2>
+    <p style="color:var(--pink-dark);font-weight:bold;">SPECIAL DELIVERY</p>
+    <h2 style="font-size:1.2rem;">Happy Women's Day, My Love!</h2>
     <p>Something from the heart, just for you</p>
+    <button id="music-start-btn" onclick="startSurprise()">
+      🎵 Open Your Surprise
+    </button>
+    <div id="music-status"></div>
     <div class="envelope-wrapper">
       <div class="envelope" onclick="startSurprise()">
         <div class="heart-icon">❤️</div>
       </div>
     </div>
-    <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">Click to open your Women's Day Surprise</p>
+    <p style="margin-top:20px;font-size:0.8rem;color:#888;">Tap the button or envelope to begin</p>
   </div>
 
   <div id="screen2" class="screen">
@@ -194,19 +146,19 @@ animation: fadeIn 0.5s ease;
       <p>Today is not just about celebrating women — it's about celebrating <strong>YOU</strong>.</p>
       <p>Your strength, your kindness, and the way you make the world brighter just by being in it inspire me every single day.</p>
       <p>I'm incredibly lucky to walk beside such a beautiful and strong woman. Never forget how special you are.</p>
-      <p style="text-align: right; font-family: 'Dancing Script'; font-size: 1.5rem;">Forever Yours ❤️</p>
+      <p style="text-align:right;font-family:'Dancing Script';font-size:1.5rem;">Forever Yours ❤️</p>
     </div>
     <button class="btn" onclick="showScreen(3)">See Your Playlist</button>
   </div>
 
   <div id="screen3" class="screen">
-    <h2 style="color: var(--pink-dark);">Vibes for My Queen 🎵</h2>
+    <h2 style="color:var(--pink-dark);">Vibes for My Queen 🎵</h2>
     <div class="playlist-card">
       <div class="song-item">
         <div class="song-img">🎧</div>
-        <div style="text-align: left;">
-          <div style="font-weight: bold;">El Hob Gany - TUL8TE</div>
-          <div style="font-size: 0.7rem;">The song that reminds me of you...</div>
+        <div style="text-align:left;">
+          <div style="font-weight:bold;">El Hob Gany - TUL8TE</div>
+          <div style="font-size:0.7rem;">The song that reminds me of you...</div>
         </div>
       </div>
     </div>
@@ -214,73 +166,94 @@ animation: fadeIn 0.5s ease;
   </div>
 
   <div id="screen4" class="screen">
-    <h2 style="color: var(--pink-dark);">Special Wishes 🌸</h2>
+    <h2 style="color:var(--pink-dark);">Special Wishes 🌸</h2>
     <p>Tap each card to reveal a message!</p>
     <div class="grid">
-      <div class="card" onclick="revealCard(this, 'You are strong, beautiful, and truly one of a kind ✨')">
-        <span>🎁</span>
-      </div>
-      <div class="card" onclick="revealCard(this, 'I am so proud of the woman you are becoming every day.')">
-        <span>🌟</span>
-      </div>
-      <div class="card" onclick="revealCard(this, 'Thank you for choosing me to be by your side.')">
-        <span>💌</span>
-      </div>
-      <div class="card" onclick="revealCard(this, 'Happy Women\'s Day to my forever favorite person!')">
-        <span>👑</span>
-      </div>
+      <div class="card" onclick="revealCard(this,'You are strong, beautiful, and truly one of a kind ✨')"><span>🎁</span></div>
+      <div class="card" onclick="revealCard(this,'I am so proud of the woman you are becoming every day.')"><span>🌟</span></div>
+      <div class="card" onclick="revealCard(this,'Thank you for choosing me to be by your side.')"><span>💌</span></div>
+      <div class="card" onclick="revealCard(this,'Happy Women\'s Day to my forever favorite person!')"><span>👑</span></div>
     </div>
     <div id="final-btn-container" style="display:none;">
       <button class="btn" onclick="alert('I love you to the moon and back!')">Seal With Love ❤️</button>
     </div>
   </div>
+
 </div>
 
-<!-- Fallback play button for iOS if autoplay is blocked -->
-<button id="play-fallback" onclick="manualPlay()">▶ Play Music 🎵</button>
+<button id="music-indicator" onclick="toggleMusic()">🎵 Playing</button>
 
 <script>
   let revealedCount = 0;
   let bgMusic = null;
+  let musicStarted = false;
+  let started = false;
 
-  function showScreen(screenNum) {
+  function showScreen(num) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen' + screenNum).classList.add('active');
+    document.getElementById('screen' + num).classList.add('active');
+  }
+
+  function setStatus(msg, color) {
+    const el = document.getElementById('music-status');
+    el.textContent = msg;
+    el.style.color = color || '#aaa';
   }
 
   function startSurprise() {
-    // Create Audio INSIDE the user gesture — required by iOS Safari
-    if (!bgMusic) {
-      bgMusic = new Audio('song.mp3');
-      bgMusic.loop = true;
-    }
+    if (started) return;
+    started = true;
 
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-      playPromise
+    document.getElementById('music-start-btn').disabled = true;
+    setStatus('Loading music...', '#ff85a2');
+
+    bgMusic = new Audio();
+    bgMusic.loop = true;
+    bgMusic.preload = 'auto';
+
+    bgMusic.addEventListener('canplaythrough', () => {
+      bgMusic.play()
         .then(() => {
-          document.getElementById('play-fallback').style.display = 'none';
+          musicStarted = true;
+          setStatus('');
+          document.getElementById('music-indicator').style.display = 'block';
+          document.getElementById('music-indicator').textContent = '🎵 Playing';
         })
-        .catch(() => {
-          // iOS blocked it — show the fallback button
-          document.getElementById('play-fallback').style.display = 'block';
+        .catch(err => {
+          setStatus('⚠️ Tap the button below to play music', '#d63384');
+          document.getElementById('music-indicator').style.display = 'block';
+          document.getElementById('music-indicator').textContent = '▶ Tap to Play';
+          console.error('Play error:', err);
         });
-    }
+    }, { once: true });
+
+    bgMusic.addEventListener('error', () => {
+      setStatus('⚠️ song.mp3 not found — check GitHub file name', '#cc0000');
+    });
+
+    bgMusic.src = 'song.mp3';
+    bgMusic.load();
 
     showScreen(2);
   }
 
-  function manualPlay() {
-    if (bgMusic) {
+  function toggleMusic() {
+    if (!bgMusic) return;
+    if (musicStarted) {
+      bgMusic.pause();
+      musicStarted = false;
+      document.getElementById('music-indicator').textContent = '▶ Tap to Play';
+    } else {
       bgMusic.play().then(() => {
-        document.getElementById('play-fallback').style.display = 'none';
+        musicStarted = true;
+        document.getElementById('music-indicator').textContent = '🎵 Playing';
       });
     }
   }
 
   function revealCard(element, message) {
     if (!element.classList.contains('revealed')) {
-      element.innerHTML = `<p style="font-size: 0.8rem; padding: 5px;">${message}</p>`;
+      element.innerHTML = `<p style="font-size:0.8rem;padding:5px;">${message}</p>`;
       element.classList.add('revealed');
       revealedCount++;
       if (revealedCount === 4) {
